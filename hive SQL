@@ -1,5 +1,6 @@
-set hive.metastore.warehouse.dir = /user/itv000439/warehouse
-
+set hive.metastore.warehouse.dir = /user/itv000439/warehouse;
+use itv000439_retail_db_txt1;
+show tables;
 // Create DB 
 create database <db_name>;
 

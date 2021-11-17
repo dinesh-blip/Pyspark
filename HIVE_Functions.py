@@ -86,43 +86,15 @@ select order_status,
 #########Row level Transformation############
 
 select cast(concat(substring(order_date, 1,4),substring(order_date, 6,2)) as int) from orders limit 10;
-select cast(date_format(order_date, 'YYYYMM') as int) form orders limit 10;
 select cast()
 
 ######Joins############
- \\Iner join\\
- select o.*,c.* from orders o,customers c where o.order_cust_id = c.customer_id limit 10;
- select o.*,c.* from orders o join customers c on o.order_cust_id = c.customer_id limit 10;
- \\left outter join\\
-select o.*,c.* from customers c left outer join orders o on o.order_cust_id = c.customer_id limit 10;
-select count(1) from customers c left outer join orders o on o.order_cust_id = c.customer_id where o.order_cust_id is null;
+select o.*,c.* from orders 0 and customers c where o.order_customer_id = c.customer_id limit 10;
 
-\\\full outter join\\\
 ##########Aggregate############
-\\\\\\\Group By Aggregation\\\
-select order_status ,count(1) as order_count from orders group by order_status;
+select order_status, count(1) from orders group by order_status;
 
-select o.order_id, sum(oi.order_item_subtotal) from orders o join order_items oi on o.order_id = oi.order_item_order_id group by o.order_id;
-
-
-
-select o.order_id, o.order_date, o.order_status, round(sum(oi.order_item_subtotal), 2) order_revenue
-from orders o join order_items oi
-on o.order_id = oi.order_item_order_id
-where o.order_status in ('COMPLETE', 'CLOSED')
-group by o.order_id, o.order_date, o.order_status
-having sum(oi.order_item_subtotal) >= 1000 
-order by o.order_date ,order_revenue desc;
-
-
-
-
-############Sorting##########
-////\\\\
-
-
-#############
-
-
-
-
+select o.order_id, sum(o.order_item_subtotal) form orders o 
+join 
+order_items oi on o.order_id = oi.order_item_order_id
+group by o.order_id;
